@@ -9,6 +9,10 @@ import io.qameta.allure.Attachment;
 import org.testng.annotations.Listeners;
 import io.qameta.allure.Allure;
 import java.io.ByteArrayInputStream;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import java.time.Duration;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 
 @Listeners({io.qameta.allure.testng.AllureTestNg.class})
 
@@ -18,9 +22,19 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com/");
+
+        ChromeOptions options = new ChromeOptions();
+
+        options.addArguments("--headless=new");   // IMPORTANT
+        options.addArguments("--no-sandbox");     // REQUIRED in CI
+        options.addArguments("--disable-dev-shm-usage"); // PREVENT CRASH
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
+
+        driver = new ChromeDriver(options);
+
+//        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
 //    @Attachment(value = "Screenshot on Failure", type = "image/png")
