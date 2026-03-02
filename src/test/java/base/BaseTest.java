@@ -32,9 +32,9 @@ public class BaseTest {
         options.addArguments("--window-size=1920,1080");
 
         driver = new ChromeDriver(options);
-
 //        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get("https://www.saucedemo.com/");
     }
 
 //    @Attachment(value = "Screenshot on Failure", type = "image/png")

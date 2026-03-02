@@ -11,6 +11,7 @@
           <option value="saucedemo-selenium-automation" />
           <option value="saucedemo-selenium-automation" />
           <option value="saucedemo-selenium-automation" />
+          <option value="saucedemo-selenium-automation" />
         </list>
       </option>
       <option name="ignoredPackages">
@@ -19,10 +20,12 @@
           <option value="com.fasterxml.jackson.core:jackson-core:2.10.3" />
           <option value="org.bouncycastle:bcpkix-jdk18on:1.76" />
           <option value="org.apache.commons:commons-lang3:3.17.0" />
+          <option value="com.fasterxml.jackson.core:jackson-core:2.18.3" />
         </list>
       </option>
       <option name="ignoredReasons">
         <list>
+          <option value="Not exploitable" />
           <option value="Not exploitable" />
           <option value="Not exploitable" />
           <option value="Not exploitable" />
