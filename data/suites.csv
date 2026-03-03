@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Verify that standard user can login successfully and navigate to products page","303","standardUserLoginTest","Surefire suite","2026-03-03","passed","2026-03-03","tests.StandardUserTest","Surefire test","tests.StandardUserTest","standardUserLoginTest"
+"Verify locked user cannot login","276","lockedOutUserLoginTest","Surefire suite","2026-03-03","passed","2026-03-03","tests.LockedOutUserTest","Surefire test","tests.LockedOutUserTest","lockedOutUserLoginTest"
+"Verify that performance user can login successfully","5316","performanceUserLoginTest","Surefire suite","2026-03-03","passed","2026-03-03","tests.PerformanceUserTest","Surefire test","tests.PerformanceUserTest","performanceUserLoginTest"
+"","511","Verify that standard user can login successfully","Surefire suite","2026-03-03","passed","2026-03-03","tests.LoginTest","Surefire test","tests.LoginTest","validLoginTest"
