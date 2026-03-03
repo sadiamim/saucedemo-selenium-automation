@@ -24,9 +24,10 @@ jobs:
       # Download Allure CLI (portable)
       - name: Download Allure
         run: |
-          wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.29.0.tgz
-          tar -xzf allure-2.29.0.tgz
-          sudo mv allure-2.29.0 /opt/allure
+          ALLURE_VERSION=2.37.0
+          wget https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.tgz
+          tar -xzf allure-${ALLURE_VERSION}.tgz
+          sudo mv allure-${ALLURE_VERSION} /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
       - name: Generate Allure Report
