@@ -38,22 +38,48 @@ public class BaseTest {
     }
 
 //    @Attachment(value = "Screenshot on Failure", type = "image/png")
-//    public byte[]  takeScreenshot() {
+//    public byte[] takeScreenshot() {
 //        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 //    }
+
+        @Attachment(value = "{0} - screenshot", type = "image/png")
+    public byte[] captureScreenshot(String testName) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
+        @Attachment(value = "Failure Screenshot", type = "image/png")
+    public byte[] captureScreenshot() {
+        return ((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.BYTES);
+    }
+//    @AfterMethod
+//    public void tearDown(ITestResult result) {
 //
+//        if (ITestResult.FAILURE == result.getStatus()) {
+//
+//            byte[] screenshot = ((TakesScreenshot) driver)
+//                    .getScreenshotAs(OutputType.BYTES);
+//
+//            Allure.addAttachment(
+//                    "Screenshot on Failure",
+//                    new ByteArrayInputStream(screenshot)
+//            );
+//        }
+//
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
+
     @AfterMethod
     public void tearDown(ITestResult result) {
 
-        if (ITestResult.FAILURE == result.getStatus()) {
+        System.out.println("AFTER METHOD EXECUTED");
+        System.out.println("Test Status: " + result.getStatus());
 
-            byte[] screenshot = ((TakesScreenshot) driver)
-                    .getScreenshotAs(OutputType.BYTES);
-
-            Allure.addAttachment(
-                    "Screenshot on Failure",
-                    new ByteArrayInputStream(screenshot)
-            );
+        if (result.getStatus() == ITestResult.FAILURE && driver != null) {
+            captureScreenshot(result.getName());
+            System.out.println("Screenshot method called");
         }
 
         if (driver != null) {
