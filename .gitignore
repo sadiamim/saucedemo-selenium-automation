@@ -1,3 +1,6 @@
+# Maven
+/target/
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -8,6 +11,18 @@ target/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
+
+# Allure
+/allure-results/
+/allure-report/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Logs
+*.log
+
 .idea/libraries/
 *.iws
 *.iml
