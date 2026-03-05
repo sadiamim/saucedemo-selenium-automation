@@ -39,6 +39,10 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPage.getPageTitle(), "Products");
         System.out.println("Login test executed successfully");
 
-        Assert.assertEquals("Actual", "WrongValue");
+//        Assert.assertEquals("Actual", "WrongValue");
+//         Assert.assertEquals(actualText, "Actual");
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
+//        Assert.assertTrue(driver.getCurrentUrl().contains("inventory"));
     }
 }
