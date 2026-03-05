@@ -18,3 +18,9 @@ mvn clean test
 
 ## Generate Allure Report
 allure serve target/allure-results
+
+## 📊 Live Allure Test Report
+
+View the latest automated test execution report:
+
+https://sadiamim.github.io/saucedemo-selenium-automation/
