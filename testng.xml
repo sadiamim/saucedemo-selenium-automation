@@ -7,6 +7,10 @@
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
 
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
 <!--    /*<test name="Sequential Execution">*/-->
     <test name="All Tests">
 <!--    <test name="Parallel Execution">-->

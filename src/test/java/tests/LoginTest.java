@@ -12,6 +12,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Description;
 
 @Epic("SauceDemo Application")
 @Feature("Login Module")
@@ -26,7 +27,8 @@ public class LoginTest extends BaseTest {
 
     @Story("Valid Login Scenario")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(description = "Verify that standard user can login successfully")
+    @Description("Verify that standard user can login successfully")
+    @Test(description = "Verify valid login")
     public void validLoginTest() {
 
         loginPage.enterUsername("standard_user");
@@ -37,12 +39,10 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(header, "Products");
 
         Assert.assertEquals(loginPage.getPageTitle(), "Products");
+
+        Assert.assertEquals(driver.getCurrentUrl(),
+                "https://www.saucedemo.com/inventory.html");
+
         System.out.println("Login test executed successfully");
-
-//        Assert.assertEquals("Actual", "WrongValue");
-//         Assert.assertEquals(actualText, "Actual");
-
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
-//        Assert.assertTrue(driver.getCurrentUrl().contains("inventory"));
     }
 }
