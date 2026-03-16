@@ -43,6 +43,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(),
                 "https://www.saucedemo.com/inventory.html");
 
+
         System.out.println("Login test executed successfully");
     }
 }

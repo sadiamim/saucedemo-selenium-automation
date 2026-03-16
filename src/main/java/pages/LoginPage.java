@@ -19,7 +19,7 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public InventoryPage login(String username, String password){
+    public InventoryPage login(String username, String password) {
 
         driver.findElement(usernameField).sendKeys(username);
         driver.findElement(passwordField).sendKeys(password);
@@ -56,8 +56,31 @@ public class LoginPage {
     public String getErrorMessage() {
         return driver.findElement(errorMessage).getText();
     }
+
     @Step("Get page title")
     public String getPageTitle() {
         return driver.findElement(By.className("title")).getText();
+    }
+
+    @Step("Verify inventory page is displayed")
+    public boolean isInventoryPageDisplayed() {
+        By inventoryContainer = null;
+        return driver.findElement(inventoryContainer).isDisplayed();
+    }
+
+    @Step("Get total number of products on inventory page")
+    public int getProductCount() {
+        By products = null;
+        return driver.findElements(products).size();
+    }
+
+    @Step("Sort products by price: Low to High")
+    public void sortByLowToHigh() {
+    }
+
+    @Step("Add backpack product to cart")
+    public void addBackpackToCart() {
+        By backpackAddButton = null;
+        driver.findElement(backpackAddButton).click();
     }
 }
