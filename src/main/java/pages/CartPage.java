@@ -1,17 +1,19 @@
 package pages;
 
+import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.CheckoutPage;
 
-public class CartPage {
-
-    WebDriver driver;
+public class CartPage extends BasePage {
 
     private By cartItem = By.className("cart_item");
     private By checkoutButton = By.id("checkout");
-    private By continueShoppingButton = By.id("continue-shopping");
+//    private By continueShoppingButton = By.id("continue-shopping");
     private By removeButton = By.id("remove-sauce-labs-backpack");
+
+    public CartPage(WebDriver driver) {
+        super(driver);
+    }
 
     public boolean isCartPageDisplayed() {
         return driver.getCurrentUrl().contains("cart.html");
@@ -19,25 +21,21 @@ public class CartPage {
 
     public int getCartItemCount() {
 
+        wait.waitForElementVisible(cartItem);
         return driver.findElements(cartItem).size();
 
     }
 
     public void removeProduct() {
 
-        driver.findElement(removeButton).click();
+        wait.waitForElementClickable(removeButton).click();
 
     }
 
     public CheckoutPage clickCheckout() {
 
-        driver.findElement(checkoutButton).click();
-
-        return new CheckoutPage(driver);
-    }
-
-    public CartPage(WebDriver driver) {
-        this.driver = driver;
+        wait.waitForElementClickable(checkoutButton).click();
+        return null;
     }
 
 }

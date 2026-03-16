@@ -1,5 +1,6 @@
 package pages;
 
+import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,10 +8,12 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
+import utils.WaitUtils;
 
-public class InventoryPage {
+public class InventoryPage extends BasePage {
 
     WebDriver driver;
+    WaitUtils wait;
 
     // Locators
     private By inventoryContainer = By.id("inventory_container");
@@ -24,17 +27,18 @@ public class InventoryPage {
 
     // Constructor
     public InventoryPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     // Verify inventory page loaded
     public boolean isInventoryPageDisplayed() {
-        return driver.findElement(inventoryContainer).isDisplayed();
+        return wait.waitForElementVisible(inventoryContainer).isDisplayed();
     }
+
 
     // Add backpack to cart
     public void addBackpackToCart() {
-        driver.findElement(backpackAddButton).click();
+        wait.waitForElementClickable(backpackAddButton).click();
     }
 
     // Get cart item count
@@ -48,6 +52,7 @@ public class InventoryPage {
 
     // Get number of products
     public int getProductCount() {
+        wait.waitForElementVisible(products);
         return driver.findElements(products).size();
     }
 

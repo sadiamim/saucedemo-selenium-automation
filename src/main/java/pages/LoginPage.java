@@ -1,56 +1,47 @@
 package pages;
 
-import pages.InventoryPage;
+import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import io.qameta.allure.Step;
 
-public class LoginPage {
-    WebDriver driver;
+
+public class LoginPage extends BasePage{
 
     // Locators
-    By usernameField = By.id("user-name");
-    By passwordField = By.id("password");
-    By loginButton = By.id("login-button");
-    By errorMessage = By.cssSelector("h3[data-test='error']");
+    private By usernameField = By.id("user-name");
+    private By passwordField = By.id("password");
+    private By loginButton = By.id("login-button");
+    private By errorMessage = By.cssSelector("h3[data-test='error']");
 
     // Constructor
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+    }
+
+    // Actions with Allure Steps
+    public void enterUsername(String username) {
+        wait.waitForElementVisible(usernameField).sendKeys(username);
+    }
+
+    public void enterPassword(String password) {
+
+        wait.waitForElementVisible(passwordField).sendKeys(password);
+    }
+
+    public void clickLogin() {
+
+        wait.waitForElementClickable(loginButton).click();
     }
 
     public InventoryPage login(String username, String password) {
 
-        driver.findElement(usernameField).sendKeys(username);
-        driver.findElement(passwordField).sendKeys(password);
-        driver.findElement(loginButton).click();
+    enterUsername(username);
+    enterPassword(password);
+    clickLogin();
 
-        return new InventoryPage(driver);
+    return new InventoryPage(driver);
     }
-
-    // Actions with Allure Steps
-
-    @Step("Enter username: {0}")
-    public void enterUsername(String username) {
-        driver.findElement(usernameField).sendKeys(username);
-    }
-
-    @Step("Enter password")
-    public void enterPassword(String password) {
-        driver.findElement(passwordField).sendKeys(password);
-    }
-
-    @Step("Click login button")
-    public void clickLogin() {
-        driver.findElement(loginButton).click();
-    }
-
-//    @Step("Login with username: {0}")
-//    public void login(String username, String password) {
-//        enterUsername(username);
-//        enterPassword(password);
-//        clickLogin();
-//    }
 
     @Step("Get error message")
     public String getErrorMessage() {
