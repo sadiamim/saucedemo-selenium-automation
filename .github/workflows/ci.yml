@@ -3,6 +3,7 @@ name: Selenium Tests CI with Allure
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   test-and-deploy:
